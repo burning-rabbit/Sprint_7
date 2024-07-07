@@ -10,11 +10,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.example.courier.CourierGenerator.randomCourier;
-import static org.example.models.CourierCreds.*;
+import static org.example.models.CourierCreds.credsFromCourier;
+import static org.example.models.CourierCreds.credsWithoutLogin;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertEquals;
 
-public class CourierLoginWithWrongCredsTest {
+public class TestLoginWithOutLogin {
     private CourierClient courierClient;
     private Integer id;
 
@@ -29,15 +30,10 @@ public class CourierLoginWithWrongCredsTest {
 
         Response loginResponse = courierClient.login(credsFromCourier(courier));
         id = loginResponse.path("id");
-        assertEquals(200, loginResponse.statusCode());
 
-        Response loginResponse1 = courierClient.login(credsWithWrongLogin(courier));
-        assertEquals(404, loginResponse1.statusCode());
-        loginResponse1.then().body("message", equalTo("Учетная запись не найдена"));
-
-        Response loginResponse2 = courierClient.login(credsWithWrongPassword(courier));
-        assertEquals(404, loginResponse2.statusCode());
-        loginResponse2.then().body("message", equalTo("Учетная запись не найдена"));
+        Response loginResponse1 = courierClient.login(credsWithoutLogin(courier));
+        assertEquals(400, loginResponse1.statusCode());
+        loginResponse1.then().body("message", equalTo("Недостаточно данных для входа"));
 
     }
 

@@ -14,7 +14,7 @@ import static org.example.models.CourierCreds.*;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertEquals;
 
-public class CourierLoginRequiredTest {
+public class CourierLoginWithWrongLoginTest {
     private CourierClient courierClient;
     private Integer id;
 
@@ -29,11 +29,10 @@ public class CourierLoginRequiredTest {
 
         Response loginResponse = courierClient.login(credsFromCourier(courier));
         id = loginResponse.path("id");
-        assertEquals(200, loginResponse.statusCode());
 
-        Response loginResponse1 = courierClient.login(credsWithoutLogin(courier));
-        assertEquals(400, loginResponse1.statusCode());
-        loginResponse1.then().body("message", equalTo("Недостаточно данных для входа"));
+        Response loginResponse1 = courierClient.login(credsWithWrongLogin(courier));
+        assertEquals(404, loginResponse1.statusCode());
+        loginResponse1.then().body("message", equalTo("Учетная запись не найдена"));
 
     }
 

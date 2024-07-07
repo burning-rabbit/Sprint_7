@@ -13,7 +13,7 @@ import org.junit.Test;
 
 import static org.example.courier.CourierGenerator.*;
 
-public class TestRequired {
+public class TestCreatingCourierWithOutFirstName {
     private CourierClient courierClient;
     private Integer id;
 
@@ -21,26 +21,15 @@ public class TestRequired {
     public void setUp() { RestAssured.baseURI = CONST.getUrl(); }
 
     @Test
-    public void createCourier() {
-        Courier courier = withOutLoginCourier();
+    public void createCourierWithOutLogin() {
+
+        Courier courier = withOutFirstNameCourier();
         courierClient = new CourierClient();
-        Response response = courierClient.create(courier);
-
-        Assert.assertEquals(400, response.statusCode());
-
-        Courier courier1 = withOutPasswordCourier();
-        courierClient = new CourierClient();
-        Response response1 = courierClient.create(courier1);
-
-        Assert.assertEquals(400, response1.statusCode());
-
-        Courier courier2 = withOutFirstNameCourier();
-        courierClient = new CourierClient();
-        Response response2 = courierClient.create(courier2);
+        Response response2 = courierClient.create(courier);
 
         Assert.assertEquals(201, response2.statusCode());
 
-        Response loginResponse = courierClient.login(CourierCreds.credsFromCourier(courier2));
+        Response loginResponse = courierClient.login(CourierCreds.credsFromCourier(courier));
         id = loginResponse.path("id");
 
     }
