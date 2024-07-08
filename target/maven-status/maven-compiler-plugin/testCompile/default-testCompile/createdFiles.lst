@@ -1,0 +1,13 @@
+LoginCourierTests/CourierLoginTest.class
+CourierTests/TestCreatingCourierWithOutPassword.class
+LoginCourierTests/TestLoginWithOutLogin.class
+CourierTests/TestCreatingCourierWithOutFirstName.class
+OrederTests/OrderTest.class
+CourierTests/CourierTest.class
+CourierTests/TestCreatingTwoCouriers.class
+LoginCourierTests/CourierLoginWithWrongLoginTest.class
+LoginCourierTests/TestLogInCourierID.class
+CourierTests/TestCreatingCouriersOkTrue.class
+LoginCourierTests/CourierLoginWithWrongPasswordTest.class
+CourierTests/TestCreatingCourierWithOutLogin.class
+OrdersTest/OdrersTest.class
