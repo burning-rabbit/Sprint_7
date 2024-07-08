@@ -2,7 +2,7 @@ package OrederTests;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import org.example.CONST;
+import org.example.Const;
 import org.example.Order.OrderLogic;
 import org.example.models.Order;
 import org.junit.Assert;
@@ -32,7 +32,7 @@ public class OrderTest {
     }
 
     @Before
-    public void setUp() { RestAssured.baseURI = CONST.getUrl(); }
+    public void setUp() { RestAssured.baseURI = Const.getUrl(); }
 
     @Test
     public void createOrder() {

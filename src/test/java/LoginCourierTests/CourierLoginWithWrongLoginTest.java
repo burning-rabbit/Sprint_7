@@ -2,7 +2,7 @@ package LoginCourierTests;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import org.example.CONST;
+import org.example.Const;
 import org.example.courier.CourierClient;
 import org.example.models.Courier;
 import org.junit.After;
@@ -19,7 +19,7 @@ public class CourierLoginWithWrongLoginTest {
     private Integer id;
 
     @Before
-    public void setUp() { RestAssured.baseURI = CONST.getUrl(); }
+    public void setUp() { RestAssured.baseURI = Const.getUrl(); }
 
     @Test
     public void loginCourier() {

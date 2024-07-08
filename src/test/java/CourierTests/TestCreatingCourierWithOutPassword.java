@@ -2,7 +2,7 @@ package CourierTests;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import org.example.CONST;
+import org.example.Const;
 import org.example.courier.CourierClient;
 import org.example.models.Courier;
 import org.junit.Assert;
@@ -14,7 +14,7 @@ import static org.example.courier.CourierGenerator.*;
 public class TestCreatingCourierWithOutPassword {
 
     @Before
-    public void setUp() { RestAssured.baseURI = CONST.getUrl(); }
+    public void setUp() { RestAssured.baseURI = Const.getUrl(); }
 
     @Test
     public void createCourierWithOutLogin() {
